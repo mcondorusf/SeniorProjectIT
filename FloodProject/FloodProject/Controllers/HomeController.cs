@@ -15,10 +15,11 @@ namespace FloodProject.Controllers
             return View();
         }
 
-        public IActionResult About()
+        /// <summary>
+        /// This view returns the ArcGIS Map of the Tampa Bay area. 
+        /// </summary>
+        public IActionResult ArcGIS()
         {
-            ViewData["Message"] = "Your application description page.";
-
             return View();
         }
 
