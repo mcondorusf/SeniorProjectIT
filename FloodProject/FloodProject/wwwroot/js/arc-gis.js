@@ -1,7 +1,5 @@
 ﻿//This fires when the document loads. 
 $(document).ready(function () {
-    console.log("ready!");
-
     Create_Map(); 
 });
 
