@@ -8,8 +8,9 @@ Create_Map = () => {
         "esri/Map",
         "esri/views/MapView",
         "esri/widgets/Search", //Adds the map search function to ArgGIS
-        "esri/layers/MapImageLayer" //Adds map image layer function
-    ], function (Map, MapView, Search, MapLayer) {
+        "esri/layers/MapImageLayer", //Adds map image layer function
+        "esri/layers/support/Sublayer"
+    ], function (Map, MapView, Search, MapLayer, Sublayer) {
 
         var map = new Map({
             basemap: "topo-vector"
@@ -24,7 +25,15 @@ Create_Map = () => {
 
         //Sets layer to FEMA National Flood Hazard Layer
         var layer = new MapLayer({
-                url: "https://hazards.fema.gov/gis/nfhl/rest/services/public/NFHL/MapServer"
+            url: "https://hazards.fema.gov/gis/nfhl/rest/services/public/NFHL/MapServer",
+            //Limit sublayers displayed to those listed
+            //Ideally what layers to show will be togglable in the future
+            sublayers: [
+              {
+                id: 28,
+                visible: true
+              }
+            ]
         });
 
         // Search widget
