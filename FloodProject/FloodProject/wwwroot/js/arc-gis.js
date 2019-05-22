@@ -12,7 +12,7 @@ Create_Map = () => {
     ], function (Map, MapView, Search, MapLayer) {
 
         var map = new Map({
-            basemap: "topo-vector"
+            basemap: "terrain"// Change this 
         });
 
         var view = new MapView({
