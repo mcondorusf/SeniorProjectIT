@@ -8,9 +8,10 @@ Create_Map = () => {
         "esri/Map",
         "esri/views/MapView",
         "esri/widgets/Search", //Adds the map search function to ArgGIS
+        "esri/widgets/Legend",
         "esri/layers/MapImageLayer", //Adds map image layer function
         "esri/layers/support/Sublayer"
-    ], function (Map, MapView, Search, MapLayer, Sublayer) {
+    ], function (Map, MapView, Search, Legend, MapLayer, Sublayer) {
 
         var map = new Map({
             basemap: "topo-vector"
@@ -23,21 +24,30 @@ Create_Map = () => {
             zoom: 10
         });
 
-        //Sets layer to FEMA National Flood Hazard Layer
+        // Adds feature layer to basemap
         var layer = new MapLayer({
             url: "https://hazards.fema.gov/gis/nfhl/rest/services/public/NFHL/MapServer",
             //Limit sublayers displayed to those listed
             //Ideally what layers to show will be togglable in the future
             sublayers: [
               {
-                id: 28,
+                id: 28, // Flood Hazard Zones layer
+                visible: true
+              },
+              {
+                id: 16,  // Base Flood Elevations layer
                 visible: true
               }
             ]
         });
 
+
         // Search widget
         var search = new Search({
+            view: view
+        });
+        // Legend widget
+        var legend = new Legend({
             view: view
         });
 
@@ -46,7 +56,9 @@ Create_Map = () => {
 
         view.ui.add(search, "top-right");
 
-        Setup_Click_To_Search(view, search); 
+        view.ui.add(legend, "bottom-left");
+
+        Setup_Click_To_Search(view, search);
     });
 }; 
 
