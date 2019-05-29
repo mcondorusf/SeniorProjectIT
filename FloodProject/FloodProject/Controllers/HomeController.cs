@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using FloodProject.Models;
 
@@ -10,27 +6,20 @@ namespace FloodProject.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        /// <summary>
+        /// This view returns the ArcGIS Map of the Tampa Bay area. 
+        /// This is the main view for the activity. 
+        /// </summary>
+        public IActionResult FloodMap()
         {
             return View();
         }
 
         /// <summary>
-        /// This view returns the ArcGIS Map of the Tampa Bay area. 
+        /// This is the controller action for the About page. 
+        /// It returns the About view. 
         /// </summary>
-        public IActionResult ArcGIS()
-        {
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Privacy()
+        public IActionResult About()
         {
             return View();
         }

@@ -1,5 +1,3 @@
-using System;
-
 namespace FloodProject.Models
 {
     public class ErrorViewModel

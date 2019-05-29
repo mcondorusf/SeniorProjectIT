@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -54,9 +49,16 @@ namespace FloodProject
 
             app.UseMvc(routes =>
             {
+                //Custom route for Flood Map as root of proejct. 
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=FloodMap}/{id?}");
+
+                //Custom route for About page at /About
+                routes.MapRoute(
+                    name: "about",
+                    template: "About",
+                    defaults: new { controller = "Home", action = "About" });
             });
         }
     }
