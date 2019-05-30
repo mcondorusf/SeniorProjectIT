@@ -15,25 +15,20 @@ namespace FloodDataAPI
         private const string URL = "https://api.nationalflooddata.com";
         public const string API_KEY_PARAMETER = "x-api-key"; 
         private const string API_KEY = "MTNEr0YxxnbeaJ2ttc0I5lLlAj5R0BP9z24rj0qf";
-
-        private const string API_LAT = "lat";
-        private const string API_LONG = "lng";
-        private const string API_SEARCH_TYPE = "searchtype";
-
         private const string COORDS_SEARCHTYPE = "coord";
 
 
-        public async Task<dynamic> GetResponse()
+        public async Task<dynamic> Get_Flood_Data_By_Coordinates(double latitude, double longitude)
         {
             var url =
                 URL
+                .WithHeader(API_KEY_PARAMETER, API_KEY)
                 .AppendPathSegment("data")
                 .SetQueryParams(new
                 {
-                    API_KEY_PARAMETER = API_KEY,
-                    API_LAT = -82.7344711,
-                    API_LONG = 27.9941986,
-                    API_SEARCH_TYPE = COORDS_SEARCHTYPE
+                    lat = latitude,
+                    lng = longitude,
+                    searchtype = COORDS_SEARCHTYPE
                 });
 
             dynamic data = await url.GetJsonAsync();
