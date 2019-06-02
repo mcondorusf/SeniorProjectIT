@@ -18,12 +18,10 @@ namespace FloodDataAPI
                 Common.URL
                 .WithHeader(Common.API_KEY_PARAMETER, Common.API_KEY)
                 .AppendPathSegment(Common.FLOOD_DATA_API_PATH_SEGMENT)
-                .SetQueryParams(new
+                .SetQueryParams(new CoordinatesSearchModel
                 {
                     lat = latitude,
-                    lng = longitude,
-                    searchtype = Common.COORDS_SEARCHTYPE,
-                    getloma = false
+                    lng = longitude
                 });
 
             dynamic data = await url.GetJsonAsync();
@@ -37,11 +35,9 @@ namespace FloodDataAPI
                 Common.URL
                 .WithHeader(Common.API_KEY_PARAMETER, Common.API_KEY)
                 .AppendPathSegment(Common.FLOOD_DATA_API_PATH_SEGMENT)
-                .SetQueryParams(new
+                .SetQueryParams(new AddressSearchModel
                 {
                     address = address,
-                    searchtype = Common.ADDRESS_SEARCHTYPE,
-                    getloma = false
                 });
 
             dynamic data = await url.GetJsonAsync();
