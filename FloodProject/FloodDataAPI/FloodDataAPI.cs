@@ -12,28 +12,41 @@ namespace FloodDataAPI
         //https://github.com/tmenier/Flurl
         //https://flurl.dev/
 
-        private const string URL = "https://api.nationalflooddata.com";
-        public const string API_KEY_PARAMETER = "x-api-key"; 
-        private const string API_KEY = "MTNEr0YxxnbeaJ2ttc0I5lLlAj5R0BP9z24rj0qf";
-        private const string COORDS_SEARCHTYPE = "coord";
-
-
         public async Task<dynamic> Get_Flood_Data_By_Coordinates(double latitude, double longitude)
         {
             var url =
-                URL
-                .WithHeader(API_KEY_PARAMETER, API_KEY)
-                .AppendPathSegment("data")
+                Common.URL
+                .WithHeader(Common.API_KEY_PARAMETER, Common.API_KEY)
+                .AppendPathSegment(Common.FLOOD_DATA_API_PATH_SEGMENT)
                 .SetQueryParams(new
                 {
                     lat = latitude,
                     lng = longitude,
-                    searchtype = COORDS_SEARCHTYPE
+                    searchtype = Common.COORDS_SEARCHTYPE,
+                    getloma = false
                 });
 
             dynamic data = await url.GetJsonAsync();
 
             return data; 
+        }
+
+        public async Task<dynamic> Get_Flood_Data_By_Address(string address)
+        {
+            var url =
+                Common.URL
+                .WithHeader(Common.API_KEY_PARAMETER, Common.API_KEY)
+                .AppendPathSegment(Common.FLOOD_DATA_API_PATH_SEGMENT)
+                .SetQueryParams(new
+                {
+                    address = address,
+                    searchtype = Common.ADDRESS_SEARCHTYPE,
+                    getloma = false
+                });
+
+            dynamic data = await url.GetJsonAsync();
+
+            return data;
         }
     }
 }
