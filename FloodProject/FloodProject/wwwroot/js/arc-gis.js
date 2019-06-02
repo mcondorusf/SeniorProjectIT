@@ -20,8 +20,8 @@ Create_Map = () => {
         var view = new MapView({
             container: "GIS-Map",
             map: map,
-            center: [-82.7344711, 27.9941986], //This is the lat/long for Tampa
-            zoom: 10
+            center: [-82.41302, 28.05462], //This is the lat/long for University of South Florida
+            zoom: 15 //This zoom level shows the flood layers and legend.  Higher numbers = more zoomed in. 
         });
 
         // Adds feature layer to basemap
