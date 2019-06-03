@@ -37,7 +37,7 @@ namespace FloodDataAPI
             {
                 FloodInsuranceRateMapId = data["dfirm_id"].ToString(),
                 FloodZone = data["fld_zone"].ToString(),
-                SpecialFloodHazardArea = data["sfha_tf"].ToString(),
+                SpecialFloodHazardArea = data["sfha_tf"].ToString() == "T" ? true : false,
                 ZoneDescription = data["zone_subty"].ToString()
             }; 
         }
