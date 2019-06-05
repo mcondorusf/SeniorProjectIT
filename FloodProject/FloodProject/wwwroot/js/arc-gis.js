@@ -70,19 +70,43 @@ Setup_Click_To_Search = (view, search) => {
             var geocoder = search.activeSource.locator; // World geocode service
             geocoder.locationToAddress(evt.mapPoint)
                 .then(function (response) { // Show the address found
+                    //We want to get our flood data here from a click event. 
+                    //Call out to AJAX/API and go get flood info with the geocoder lat/long
+                    var data = Get_Flood_Data_By_Coordinates(response.location.latitude, response.location.longitude); 
+
                     var address = response.address;
-                    showPopup(address, evt.mapPoint);
+                    showPopup(address, data, evt.mapPoint);
                 }, function (err) { // Show no address found
                     showPopup("No address found.", evt.mapPoint);
                 });
         }
     });
 
-    function showPopup(address, pt) {
+    function showPopup(address, data, pt) {
         view.popup.open({
             title: + Math.round(pt.longitude * 100000) / 100000 + "," + Math.round(pt.latitude * 100000) / 100000,
-            content: address,
+            content: address + data,
             location: pt
         });
     }
+}
+
+Get_Flood_Data_By_Coordinates = (latitude, longitude) => {
+    $.ajax({
+        url: '/Home/GetFloodDataByCoordinates',
+        type: 'GET',
+        dataType: 'json',
+        traditional: true,
+        data: {
+            latitude: latitude,
+            longitude: longitude
+        },
+        error: function () {
+            //Swallow it, who cares lolz
+        },
+        success: function (data) {
+            //do something with what we return
+            return data; 
+        }
+    });
 }

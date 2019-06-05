@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using FloodProject.Models;
+using FloodDataAPI;
 
 namespace FloodProject.Controllers
 {
@@ -22,6 +23,20 @@ namespace FloodProject.Controllers
         public IActionResult About()
         {
             return View();
+        }
+
+        /// <summary>
+        /// This is going to return flood data from the National Flood Data API. 
+        /// It will get flood data by lat/long coordinates. 
+        /// It will return a Flood Data Result model as JSON. 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult GetFloodDataByCoordinates(double latitude, double longitude)
+        {
+            var flood_data = "this is my flood data"; 
+
+            return Json(new { data = flood_data });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
