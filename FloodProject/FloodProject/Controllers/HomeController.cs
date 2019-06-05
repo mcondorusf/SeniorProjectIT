@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using FloodProject.Models;
 using FloodDataAPI;
+using System.Threading.Tasks;
 
 namespace FloodProject.Controllers
 {
@@ -32,9 +33,11 @@ namespace FloodProject.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult GetFloodDataByCoordinates(double latitude, double longitude)
+        public async Task<ActionResult> GetFloodDataByCoordinates(double latitude, double longitude)
         {
-            var flood_data = "this is my flood data"; 
+            FloodDataResults flood_data_api = new FloodDataResults();
+
+            var flood_data = await flood_data_api.Get_Flood_Data_Model_By_Coordiantes(latitude, longitude); 
 
             return Json(new { data = flood_data });
         }

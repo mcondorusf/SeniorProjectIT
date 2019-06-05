@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace FloodDataAPI
 {
@@ -42,7 +40,7 @@ namespace FloodDataAPI
             }; 
         }
 
-        public FloodDataResultModel Convert_Flood_API_Data_To_Flood_Model(dynamic data)
+        internal FloodDataResultModel Convert_Flood_API_Data_To_Flood_Model(dynamic data)
         {
             var information = Get_Flood_Data_From_API_Result(data);
 

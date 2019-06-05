@@ -12,7 +12,7 @@ namespace FloodDataAPI
         //https://github.com/tmenier/Flurl
         //https://flurl.dev/
 
-        public async Task<dynamic> Get_Flood_Data_By_Coordinates(double latitude, double longitude)
+        internal async Task<dynamic> Get_Flood_Data_By_Coordinates(double latitude, double longitude)
         {
             var url =
                 Common.URL
@@ -29,18 +29,7 @@ namespace FloodDataAPI
             return data; 
         }
 
-        public FloodDataResultModel Get_Flood_Data_Model_By_Coordiantes(double latitude, double longitude)
-        {
-            var flood_data = Get_Flood_Data_By_Coordinates(latitude, longitude);
-
-            BuildFloodResultsModel build_model = new BuildFloodResultsModel();
-
-            var model = build_model.Convert_Flood_API_Data_To_Flood_Model(flood_data);
-
-            return model; 
-        }
-
-        public async Task<dynamic> Get_Flood_Data_By_Address(string address)
+        internal async Task<dynamic> Get_Flood_Data_By_Address(string address)
         {
             var url =
                 Common.URL
@@ -55,7 +44,5 @@ namespace FloodDataAPI
 
             return data;
         }
-
-
     }
 }
