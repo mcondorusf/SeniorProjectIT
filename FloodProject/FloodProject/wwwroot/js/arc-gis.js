@@ -27,8 +27,8 @@ Create_Map = () => {
         // Adds feature layer to basemap
         var layer = new MapLayer({
             url: "https://hazards.fema.gov/gis/nfhl/rest/services/public/NFHL/MapServer",
-            //Limit sublayers displayed to those listed
-            //Ideally what layers to show will be togglable in the future
+            /// Limit sublayers displayed to those listed
+            /// Ideally what layers to show will be togglable in the future
             sublayers: [
               {
                 id: 28, // Flood Hazard Zones layer
@@ -46,7 +46,8 @@ Create_Map = () => {
         var search = new Search({
             view: view,
         });
-        
+        /// On search complete pass/receive data from HomeController
+        /// using ajax and update the search popup content
         search.on("search-complete", function (event) {
             $.ajax({
                 url: 'Home/GetFloodDataByAddress',
@@ -94,7 +95,8 @@ Setup_Click_To_Search = (view, search) => {
                 });
         }
     });
-
+    /// Pass/receive data from HomeController using ajax
+    /// and update the on-click popup content
     function showPopup(address, pt) {
         $.ajax({
             url: 'Home/GetFloodDataByCoordinates',
