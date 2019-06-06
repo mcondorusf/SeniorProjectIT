@@ -1,4 +1,4 @@
-<a href="https://www.usf.edu/it" target="_blank"><img align="right" src="https://cdn.usf.edu/_resources/images/v3/global/png/logo-classic-stacked.png"></a>
+<a target="_blank" href="https://www.usf.edu/it"><img align="right" src="https://cdn.usf.edu/_resources/images/v3/global/png/logo-classic-stacked.png"></a>
 # USF IT Senior Project
 
 # Motivation 
@@ -22,9 +22,9 @@ National Flood Data API:  The National Flood Data API is used by this applicatio
 This web application is intended for use with all modern desktop browsers. Although it can be accessed from any device capable of web browsing, support is not currently guaranteed for mobile device screen sizes or interactions.
 
 # Integrations, API, and Database Resources
-- <a href="https://developers.arcgis.com/">ArcGIS</a> - GIS, Maps, Layers
-- <a href="https://www.fema.gov/flood-insurance-rate-map-firm">FEMA</a> - Flood Insurance Data
-- <a href="http://nationalflooddata.com/flood/floodapi/">National Flood Data</a> - Flood Data API
+- <a href="https://developers.arcgis.com/" target="_blank">ArcGIS</a> - GIS, Maps, Layers
+- <a href="https://www.fema.gov/flood-insurance-rate-map-firm" target="_blank">FEMA</a> - Flood Insurance Data
+- <a href="http://nationalflooddata.com/flood/floodapi/" target="_blank">National Flood Data</a> - Flood Data API
 
 # Screenshots
 <img width="800" height="400" src="https://github.com/mcondorusf/SeniorProjectIT/blob/master/usf_flood_data.PNG?raw=true">
