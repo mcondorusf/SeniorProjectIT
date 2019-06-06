@@ -1,4 +1,4 @@
-<a href="https://www.usf.edu/it"><img align="right" src="https://cdn.usf.edu/_resources/images/v3/global/png/logo-classic-stacked.png"></a>
+<a href="https://www.usf.edu/it" target="_blank"><img align="right" src="https://cdn.usf.edu/_resources/images/v3/global/png/logo-classic-stacked.png"></a>
 # USF IT Senior Project
 
 # Motivation 
