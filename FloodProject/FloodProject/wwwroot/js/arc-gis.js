@@ -44,20 +44,37 @@ Create_Map = () => {
 
         // Search widget
         var search = new Search({
-            view: view
+            view: view,
         });
+        
+        search.on("search-complete", function (event) {
+            $.ajax({
+                url: 'Home/GetFloodDataByAddress',
+                type: 'GET',
+                traditional: true,
+                data: event.searchTerm,
+                success: function (data) {
+                    search.popupTemplate.content = "<h1>" + data.data + "</h1>";
+                },
+                error: function () {
+                    // Hope this works
+                }
+            });
+            search.popupTemplate.content = event.searchTerm;
+        });
+
         // Legend widget
         var legend = new Legend({
             view: view
         });
 
-        //Adds the layer defined as an overlay on the basemap
+        // Adds the layer defined abocve as an overlay on the basemap
         map.add(layer);
-
+        // Displays the search widget created above
         view.ui.add(search, "top-right");
-
+        // Displays the legend widget created above
         view.ui.add(legend, "bottom-left");
-
+        // Fires click to search 
         Setup_Click_To_Search(view, search);
     });
 }; 
@@ -69,44 +86,35 @@ Setup_Click_To_Search = (view, search) => {
         if (search.activeSource) {
             var geocoder = search.activeSource.locator; // World geocode service
             geocoder.locationToAddress(evt.mapPoint)
-                .then(function (response) { // Show the address found
-                    //We want to get our flood data here from a click event. 
-                    //Call out to AJAX/API and go get flood info with the geocoder lat/long
-                    var data = Get_Flood_Data_By_Coordinates(response.location.latitude, response.location.longitude); 
-
+                .then(function (response) {
                     var address = response.address;
-                    showPopup(address, data, evt.mapPoint);
+                    showPopup(address, evt.mapPoint);
                 }, function (err) { // Show no address found
                     showPopup("No address found.", evt.mapPoint);
                 });
         }
     });
 
-    function showPopup(address, data, pt) {
-        view.popup.open({
-            title: + Math.round(pt.longitude * 100000) / 100000 + "," + Math.round(pt.latitude * 100000) / 100000,
-            content: address + data,
-            location: pt
+    function showPopup(address, pt) {
+        $.ajax({
+            url: 'Home/GetFloodDataByCoordinates',
+            type: 'GET',
+            dataType: 'json',
+            traditional: true,
+            data: {
+                latitude: pt.latitude,
+                longitude: pt.longitude
+            },
+            success: function (data) {
+                view.popup.open({
+                    title: "Coords: " + Math.round(pt.longitude * 100000) / 100000 + "," + Math.round(pt.latitude * 100000) / 100000,
+                    content: address + "<h1>" + data.data + "</h1>"
+                });
+            },
+            error: function () {
+                //Swallow it, who cares lolz
+            }
         });
     }
-}
-
-Get_Flood_Data_By_Coordinates = (latitude, longitude) => {
-    $.ajax({
-        url: '/Home/GetFloodDataByCoordinates',
-        type: 'GET',
-        dataType: 'json',
-        traditional: true,
-        data: {
-            latitude: latitude,
-            longitude: longitude
-        },
-        error: function () {
-            //Swallow it, who cares lolz
-        },
-        success: function (data) {
-            //do something with what we return
-            return data; 
-        }
-    });
-}
+ 
+};

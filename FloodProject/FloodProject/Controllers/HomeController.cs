@@ -34,7 +34,15 @@ namespace FloodProject.Controllers
         [HttpGet]
         public ActionResult GetFloodDataByCoordinates(double latitude, double longitude)
         {
-            var flood_data = "this is my flood data"; 
+            var flood_data = "This is my flood data via coords"; 
+
+            return Json(new { data = flood_data });
+        }
+
+        [HttpGet]
+        public ActionResult GetFloodDataByAddress(string address)
+        {
+            var flood_data = "This is my flood data via address";
 
             return Json(new { data = flood_data });
         }
