@@ -56,8 +56,11 @@ Create_Map = () => {
                 data: {
                     address: event.searchTerm
                 },
-                success: function (data) {
-                    search.popupTemplate.content = "<h1>" + data.data + "</h1>";
+                success: function (response) {
+                    search.popupTemplate.content =
+                        "<h3>Address: " + event.searchTerm + "</h3><br>"
+                        + "<h5>Flood Zone: " + response.data.floodZone + "</h5><br>"
+                        + "<h5>Flood Zone: " + response.data.floodZoneDesciption + "</h5><br>";
                 },
                 error: function () {
                     // Hope this works
