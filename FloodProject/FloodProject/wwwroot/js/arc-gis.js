@@ -53,7 +53,9 @@ Create_Map = () => {
                 url: 'Home/GetFloodDataByAddress',
                 type: 'GET',
                 traditional: true,
-                data: event.searchTerm,
+                data: {
+                    address: event.searchTerm
+                },
                 success: function (data) {
                     search.popupTemplate.content = "<h1>" + data.data + "</h1>";
                 },
@@ -95,6 +97,7 @@ Setup_Click_To_Search = (view, search) => {
                 });
         }
     });
+
     /// Pass/receive data from HomeController using ajax
     /// and update the on-click popup content
     function showPopup(address, pt) {

@@ -33,11 +33,21 @@ namespace FloodDataAPI
         {
             return new FloodDataResultModel
             {
-                FloodInsuranceRateMapId = data["dfirm_id"].ToString(),
-                FloodZone = data["fld_zone"].ToString(),
-                SpecialFloodHazardArea = data["sfha_tf"].ToString() == "T" ? true : false,
-                ZoneDescription = data["zone_subty"].ToString()
+                FloodInsuranceRateMapId = Convert_API_Property_To_String(data["dfirm_id"]),
+                FloodZone = Convert_API_Property_To_String(data["fld_zone"]),
+                SpecialFloodHazardArea = Convert_API_Property_To_String(data["sfha_tf"]) == "T" ? true : false,
+                ZoneDescription = Convert_API_Property_To_String(data["zone_subty"])
             }; 
+        }
+
+        private string Convert_API_Property_To_String(dynamic api_property)
+        {
+            if(api_property != null)
+            {
+                return api_property.ToString(); 
+            }
+
+            return string.Empty; 
         }
 
         internal FloodDataResultModel Convert_Flood_API_Data_To_Flood_Model(dynamic data)

@@ -15,5 +15,17 @@ namespace FloodDataAPI
 
             return model;
         }
+
+        public async Task<FloodDataResultModel> Get_Flood_Data_Model_By_Address(string address)
+        {
+            FloodDataAPI API = new FloodDataAPI();
+            BuildFloodResultsModel BUILD = new BuildFloodResultsModel();
+
+            var flood_data = await API.Get_Flood_Data_By_Address(address);
+
+            var model = BUILD.Convert_Flood_API_Data_To_Flood_Model(flood_data);
+
+            return model;
+        }
     }
 }
