@@ -49,12 +49,16 @@ Create_Map = () => {
         /// On search complete pass/receive data from HomeController
         /// using ajax and update the search popup content
         search.on("search-complete", function (event) {
+            /// Map center's on the popup/result after searching
+            /// Using this to grab coords based on map center
+            var mapCenter = view.center.clone();
             $.ajax({
-                url: 'Home/GetFloodDataByAddress',
+                url: 'Home/GetFloodDataByCoordinates',
                 type: 'GET',
                 traditional: true,
                 data: {
-                    address: event.searchTerm
+                    latitude: mapCenter.latitude,
+                    longitude: mapCenter.longitude
                 },
                 success: function (response) {
                     search.popupTemplate.content =
@@ -113,10 +117,10 @@ Setup_Click_To_Search = (view, search) => {
                 latitude: pt.latitude,
                 longitude: pt.longitude
             },
-            success: function (data) {
+            success: function (response) {
                 view.popup.open({
                     title: "Coords: " + Math.round(pt.longitude * 100000) / 100000 + "," + Math.round(pt.latitude * 100000) / 100000,
-                    content: address + "<h1>" + data.data + "</h1>"
+                    content: address + "<h5>" + response.data.floodZoneDesciption + "</h5>"
                 });
             },
             error: function () {
