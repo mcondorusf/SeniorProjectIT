@@ -48,5 +48,12 @@
         /// LOMAs are often a long list of entries, so excluding the query can save time.
         /// </summary>
         public bool getloma { get; set; } = false;
+
+        /// <summary>
+        /// Optional value. 
+        /// When set to "True" or "true", base flood elevations (BFE) will be included in geojson format. 
+        /// Note: BFEs are available only in sample counties (e.g. Bergen, NJ) and are not currently maintained nationwide.
+        /// </summary>
+        public bool getbfe { get; set; } = true;
     }
 }
