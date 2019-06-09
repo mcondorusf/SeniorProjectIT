@@ -61,16 +61,19 @@ Create_Map = () => {
                     longitude: mapCenter.longitude
                 },
                 success: function (response) {
+                    search.popupTemplate.title = "<h2>Location Results: </h2>",
                     search.popupTemplate.content =
-                        "<h3>Address: " + event.searchTerm + "</h3><br>"
-                        + "<h5>Flood Zone: " + response.data.floodZone + "</h5><br>"
-                        + "<h5>Flood Zone: " + response.data.floodZoneDesciption + "</h5><br>";
+                    "<h5>Coordinates:</h5>" + Math.round(mapCenter.longitude * 100000) / 100000 + ", " + Math.round(mapCenter.latitude * 100000) / 100000 
+                    + "<h5>Address:</h5>" + event.searchTerm + "<br>"
+                    + "<h5>Flood Zone:</h5>Zone " + response.data.floodZone 
+                    + "<h5>Catastrophic Flood Probability:</h5>" + response.data.floodZoneDesciption 
+                    + "<h5>Base Flood Elevation:</h5>" + null //placeholder for BFE
+                    + "<h5>Flood Insurance Required?</h5>" + response.data.SpecialFloodHazardArea; 
                 },
                 error: function () {
                     // Hope this works
                 }
             });
-            search.popupTemplate.content = event.searchTerm;
         });
 
         // Legend widget
