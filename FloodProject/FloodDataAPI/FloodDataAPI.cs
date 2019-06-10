@@ -27,6 +27,9 @@ namespace FloodDataAPI
 
             FloodDataResponse data = await url.GetJsonAsync<FloodDataResponse>();
 
+            dynamic test_data = await url.GetJsonAsync(); 
+            string json = JsonConvert.SerializeObject(test_data);
+
             return data; 
         }
 
