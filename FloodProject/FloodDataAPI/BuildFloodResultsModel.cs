@@ -1,60 +1,52 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 
 namespace FloodDataAPI
 {
     public class BuildFloodResultsModel
     {
-        private IDictionary<string, object> Get_Flood_Data_From_API_Result(dynamic data)
+        internal FloodDataResultModel Convert_Flood_API_Data_To_Flood_Model(FloodDataResponse flood_data, FloodMapResponse flood_map)
         {
-            //For looking at a National Flood Data Result object check: 
-            //http://nationalflooddata.com/flood/floodapi/#response
+            FloodDataResultModel model = new FloodDataResultModel();
 
-            //Convert the dynamic result from the Flood Data API to a dictionary. 
-            IDictionary<string, object> dictionary_data = data;
+            Convert_Flood_Data_To_Model_Properties(flood_data, model);
 
-            //Get the result object from the Flood Data dyanmic object
-            //FROM API DOCS: result = list of one or more results (list of dictionaries)
-            IDictionary<string, object> result = (IDictionary<string, object>)dictionary_data["result"];
+            Convert_Flood_Data_To_Model_Properties(flood_map, model); 
 
-            //Get the flood information from the result. 
-            //FROM API DOCS: s_fld_haz_ar = list of fields from the intersection with FEMA layer s_fld_haz_ar; one dictionary per intersection (details below)
-            IList flood_result = (IList)result["flood.s_fld_haz_ar"];
-
-            //Cast the List of results to an Enumerable of Dictionaries. 
-            IEnumerable<IDictionary<string, object>> items = flood_result.Cast<IDictionary<string, object>>();
-
-            //Take the first result. 
-            return items.FirstOrDefault();
+            return model; 
         }
 
-        private FloodDataResultModel Build_Result_Model_From_Flood_Data(IDictionary<string, object> data)
+        private FloodDataResultModel Convert_Flood_Data_To_Model_Properties(FloodDataResponse flood_data, FloodDataResultModel model)
         {
-            return new FloodDataResultModel
-            {
-                FloodInsuranceRateMapId = Convert_API_Property_To_String(data["dfirm_id"]),
-                FloodZone = Convert_API_Property_To_String(data["fld_zone"]),
-                SpecialFloodHazardArea = Convert_API_Property_To_String(data["sfha_tf"]) == "T" ? true : false,
-                ZoneDescription = Convert_API_Property_To_String(data["zone_subty"])
-            }; 
-        }
+            var flood_data_result =
+                flood_data.result
+                .s_fld_haz_ar
+                .FirstOrDefault();
 
-        private string Convert_API_Property_To_String(dynamic api_property)
-        {
-            if(api_property != null)
+            if (flood_data_result != null)
             {
-                return api_property.ToString(); 
+                model.FloodInsuranceRateMapId = flood_data_result.dfirm_id;
+                model.FloodZone = flood_data_result.fld_zone;
+                model.SpecialFloodHazardArea = flood_data_result.sfha_tf == "T" ? true : false;
+                model.ZoneDescription = flood_data_result.zone_subty;
             }
 
-            return string.Empty; 
+            return model; 
         }
 
-        internal FloodDataResultModel Convert_Flood_API_Data_To_Flood_Model(dynamic data)
+        private FloodDataResultModel Convert_Flood_Data_To_Model_Properties(FloodMapResponse flood_map, FloodDataResultModel model)
         {
-            var information = Get_Flood_Data_From_API_Result(data);
+            var flood_map_result =
+                flood_map
+                .result
+                .bfelist
+                .FirstOrDefault();
 
-            return Build_Result_Model_From_Flood_Data(information); 
+            if (flood_map_result != null)
+            {
+                model.Elevation = flood_map_result.elev;
+            }
+
+            return model;
         }
     }
 }

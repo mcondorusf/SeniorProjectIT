@@ -50,29 +50,6 @@ namespace FloodProject.Controllers
             }
         }
 
-        /// <summary>
-        /// This is going to return flood data from the National Flood Data API. 
-        /// It will get flood data by address. 
-        /// It will return a Flood Data Result model as JSON. 
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public async Task<ActionResult> GetFloodDataByAddress(string address)
-        {
-            try
-            {
-                FloodDataResults flood_data_api = new FloodDataResults();
-
-                var flood_data = await flood_data_api.Get_Flood_Data_Model_By_Address(address);
-
-                return Json(new { data = flood_data });
-            }
-            catch(Exception ex)
-            {
-                return Json(new { data = "Unable to return flood data" });
-            }
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

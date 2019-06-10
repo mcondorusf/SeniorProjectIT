@@ -23,18 +23,5 @@ namespace FloodDataAPITests
 
             Assert.IsNotNull(data.SpecialFloodHazardArea); 
         }
-
-        [TestMethod]
-        public async Task Get_Flood_Data_Map()
-        {
-            //Arrange 
-            FloodDataAPI.FloodDataAPI flood_data = new FloodDataAPI.FloodDataAPI();
-
-            //Act
-            dynamic data = await flood_data.Get_Flood_Map_By_Coordinates(28.09707, -82.40533); //This has a bfe list
-
-            //Assert
-            Assert.IsNotNull(data);
-        }
     }
 }
