@@ -49,6 +49,14 @@ namespace FloodDataAPI
         public string ZoneDescription { get; set; }
 
         /// <summary>
+        /// This comes from the Flood Map API
+        /// Object: bfelist
+        /// Property: elev
+        /// Description: elevation in feet
+        /// </summary>
+        public double Elevation { get; set; } = 0; 
+
+        /// <summary>
         /// This gets a description for a flood code. 
         /// These descritions come from http://nationalflooddata.com/flood/floodzone/
         /// They provide the description for the Flood Zone code. 
