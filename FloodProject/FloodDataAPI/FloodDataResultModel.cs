@@ -54,7 +54,7 @@ namespace FloodDataAPI
         /// Property: elev
         /// Description: elevation in feet
         /// </summary>
-        public double Elevation { get; set; }
+        public double Elevation { get; set; } = 0; 
 
         /// <summary>
         /// This gets a description for a flood code. 

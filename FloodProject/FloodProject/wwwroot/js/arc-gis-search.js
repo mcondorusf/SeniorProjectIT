@@ -50,7 +50,7 @@
                         + "<b>Address: </b>" + address + "<br><br>"
                         + "<b>Flood Zone:</b> Zone " + response.data.floodZone + "<br><br>"
                         + "<b>Catastrophic Flood Probability: </b>" + response.data.floodZoneDesciption + "<br><br>"
-                        + "<b>Base Flood Elevation: </b>" + null + "<br><br>"//placeholder for BFE
+                        + "<b>Base Flood Elevation: </b>" + response.data.elevation + " feet" + "<br><br>"
                         + "<b>Flood Insurance Required? </b>" + response.data.specialFloodHazardArea
                 });
             },
