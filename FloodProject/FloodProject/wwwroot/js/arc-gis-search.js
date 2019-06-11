@@ -58,7 +58,17 @@
                 });
             },
             error: function () {
-                //Swallow it, who cares lolz
+                view.popup.open({
+                    title: "<h2>Location Results: </h2>",
+                    content:
+                        "<b>Coordinates: </b>" + Math.round(coords.longitude * 100000) / 100000 + ", "
+                        + Math.round(coords.latitude * 100000) / 100000 + "<br><br>"
+                        + "<b>Unable to retrieve flood data for location.<br><br>"
+                        + "<b>Address: </b>" + address + "<br><br>"
+                        + "<b>Location Street View: </b><br>"
+                        + "<img src=https://maps.googleapis.com/maps/api/streetview?size=400x220&location=" + coords.latitude
+                        + "," + coords.longitude + "&key=AIzaSyAlQx0kHrvbcSy1u3sk-w8oUPT96KVpOnY>" /// call to googlemaps API for streetview
+                });
             }
         });
     }
