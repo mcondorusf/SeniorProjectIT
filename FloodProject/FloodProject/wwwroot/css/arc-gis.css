@@ -4,3 +4,29 @@
     height: 100%;
     width: 100%;
 }
+
+#search_button {
+    height: 50px;
+    width: auto;
+    border-color: #CCFF00;
+    border: 5px;
+    border-radius: 12px;
+    background: #CCFF00;
+    color: #000000;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+    #search_button:hover {
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        height: 75px;
+        width: auto;
+        border-color: #CCFF00;
+        border: 7.5px;
+        border-radius: 12px;
+        background: #99FF66;
+        color: #000000;
+        font-size: 30px;
+        font-weight: bold;
+    }
