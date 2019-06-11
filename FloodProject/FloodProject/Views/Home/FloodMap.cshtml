@@ -1,83 +1,44 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@{
+    //Need to remove the layout here so that the map shows up as expected.
+    Layout = "";
+
+    //This is taken from a tutorial of ArcGIS maps.
+    //This is located at https://developers.arcgis.com/javascript/latest/guide/create-a-starter-app/
+}
+
+<html>
 <head>
-    <title>Flood Prevention</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <style>
-        .floodimg {
-            height: 300px;
-            background: #aaa;
-        }
-    </style>
-</head>
-<body>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Flood Fighters</title>
 
-    <div class="jumbotron text-center" style="margin-bottom:0">
-        <h1>About The Flood Prevention Application</h1>
-    </div>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.11/esri/css/main.css">
 
+    <link rel="stylesheet" href="~/css/arc-gis.css" />
 
-    <div class="container" style="margin-top:30px">
-        <div class="row justify-content-md-center">
-            <div class="col col-lg-2">
+    <script src="https://js.arcgis.com/4.11/"></script>
 
-            </div>
-            <div class="col-md-auto">
-                <p>The purpose of this application is to help users predict if his or her home is in a potential flooding area, and if it is, tell how high should one elevate their house above flood level (i.e, on stilts).<p>
-            </div>
-            <div class="col col-lg-2">
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+            asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+            asp-fallback-test="window.jQuery"
+            crossorigin="anonymous"
+            integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+    </script>
 
-            </div>
+    <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+            asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+            crossorigin="anonymous"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+    </script>
 
-        </div>
-
-        <div class="jumbotron text-center" style="margin-bottom:0">
-            <div class="row">
-                <div class="col">
-                    <img src="DemoLandingPage.png" alt="HTML5 Icon" class="floodimg">
-                </div>
-                <div class="col">
-                    <p>Here is the landing page, the first thing you should see when opening the web app. Though the map focuses on the Tampa Bay area initially, it should be you can look up lood data at any point in the world.</p>
-                </div>
-            </div>
-        </div>
-
-    <link rel="stylesheet" href="https://js.arcgis.com/4.11/esri/css/main.css"> 
-
-        <div class="container" style="margin-top:30px">
-            <div class="row">
-                <div class="col">
-                    <img src="DemoSearchUSF.png" alt="HTML5 Icon" style="width:500x;height:240px;">
-                </div>
-                <div class="col">
-                    <p>Here is the initial search of a location and a popup displaying the address of the search item, if it exists at that point.</p>
-                </div>
-            </div>
-        </div>
-
-
-
-
-        <div class="jumbotron text-center" style="margin-top:30px">
-            <div class="row">
-                <div class="col">
-                    <p>Afterwards is the result of the search presenting all of the surronding areas and flood region possibilites in the surrounding region of th address typed in.</p>
-                </div>
-                <div class="col">
-                    <img src="DemoFloodLayerUSF.png" alt="HTML5 Icon" style="width:500x;height:240px;">
-                </div>
-            </div>
-        </div>
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
 
     <script src="~/js/arc-gis.js"></script>
+    <script src="~/js/arc-gis-search.js"></script>
 </head>
 <body>
     @*This is the div for the ArcGIS Map*@
-    <div id="GIS-Map"></div> 
+    <div id="GIS-Map"></div>
 </body>
 </html>
