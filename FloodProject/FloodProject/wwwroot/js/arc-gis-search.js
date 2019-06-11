@@ -33,6 +33,7 @@
     /// Pass/receive data from HomeController using ajax
     /// and updates the popup content
     function showPopup(address, coords) {
+        var apiKey = config.API_KEY;
         $.ajax({
             url: 'Home/GetFloodDataByCoordinates',
             type: 'GET',
@@ -55,7 +56,7 @@
                         + "<b>Flood Insurance Required? </b>" + response.data.specialFloodHazardArea + "<br><br>"
                         + "<b>Location Street View: </b><br>"
                         + "<img src=https://maps.googleapis.com/maps/api/streetview?size=400x220&location=" + coords.latitude
-                        + "," + coords.longitude + "&key=AIzaSyAlQx0kHrvbcSy1u3sk-w8oUPT96KVpOnY>" /// call to googlemaps API for streetview
+                        + "," + coords.longitude + "&key=" + apiKey + ">" /// call to googlemaps API for streetview
                 });
             },
             error: function () {
@@ -68,7 +69,7 @@
                         + "<b>Unable to retrieve flood data for location.<br><br>"
                         + "<b>Location Street View: </b><br>"
                         + "<img src=https://maps.googleapis.com/maps/api/streetview?size=400x220&location=" + coords.latitude
-                        + "," + coords.longitude + "&key=AIzaSyAlQx0kHrvbcSy1u3sk-w8oUPT96KVpOnY>" /// call to googlemaps API for streetview
+                        + "," + coords.longitude + "&key=" + apiKey + ">" /// call to googlemaps API for streetview
                 });
             }
         });
