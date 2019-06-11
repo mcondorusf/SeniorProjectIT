@@ -53,6 +53,24 @@ Create_Map = () => {
 
         view.ui.add(legend, "bottom-left"); //Places legend widget
 
+        Setup_About_Button(view); 
+
         Setup_Custom_Search_Response(view, search); // Fires search functions
     });
 };
+
+Setup_About_Button = (view) => {
+    var search_button = document.createElement("BUTTON");
+    search_button.innerHTML = "ABOUT";
+    search_button.id = "search_button";
+    search_button.style.height = "50px";
+    search_button.style.width = "auto";
+    search_button.style.borderColor = "#f4e1d2";
+    search_button.style.border = "5px"; 
+    search_button.style.background = "#50394c";
+    search_button.style.color = "#f4e1d2";
+    search_button.style.fontSize = "20px";
+    search_button.onclick = function () { window.open("Home/About", "_blank"); };
+
+    view.ui.add(search_button, "bottom-right"); //Places button
+}; 
