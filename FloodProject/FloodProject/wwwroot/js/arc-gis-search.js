@@ -51,7 +51,10 @@
                         + "<b>Flood Zone:</b> Zone " + response.data.floodZone + "<br><br>"
                         + "<b>Catastrophic Flood Probability: </b>" + response.data.floodZoneDesciption + "<br><br>"
                         + "<b>Base Flood Elevation: </b>" + response.data.elevation + " feet" + "<br><br>"
-                        + "<b>Flood Insurance Required? </b>" + response.data.specialFloodHazardArea
+                        + "<b>Flood Insurance Required? </b>" + response.data.specialFloodHazardArea + "<br><br>"
+                        + "<b>Location Street View: </b><br>"
+                        + "<img src=https://maps.googleapis.com/maps/api/streetview?size=400x220&location=" + coords.latitude
+                        + "," + coords.longitude + "&key=AIzaSyAlQx0kHrvbcSy1u3sk-w8oUPT96KVpOnY>" /// call to googlemaps API for streetview
                 });
             },
             error: function () {
