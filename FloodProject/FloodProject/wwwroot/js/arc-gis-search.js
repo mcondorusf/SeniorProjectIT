@@ -33,6 +33,8 @@
     /// Pass/receive data from HomeController using ajax
     /// and updates the popup content
     function showPopup(address, coords) {
+        Show_Loading_Overlay(view); 
+
         var apiKey = config.API_KEY;
         $.ajax({
             url: 'Home/GetFloodDataByCoordinates',
@@ -76,3 +78,13 @@
     }
 
 };
+
+//This shows popup with a loading overlay. 
+//Intended to use when we do a search with API calls. 
+//This lets the user know we are working on collecting data. 
+Show_Loading_Overlay = (view) => {
+    view.popup.open({
+        title: "<h2>Location Results: </h2>",
+        content: "<div class='loader'></div>"
+    });
+}
