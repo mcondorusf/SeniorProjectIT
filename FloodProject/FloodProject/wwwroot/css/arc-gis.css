@@ -7,11 +7,11 @@
 
 #search_button {
     height: 50px;
-    width: auto;
+    width: 50px;
     border-color: #CCFF00;
     border: 5px;
     border-radius: 12px;
-    background: #CCFF00;
+    background: #fe4040;
     color: #000000;
     font-size: 20px;
     font-weight: bold;
@@ -20,12 +20,12 @@
     #search_button:hover {
         -webkit-transition-duration: 0.4s; /* Safari */
         transition-duration: 0.4s;
-        height: 75px;
-        width: auto;
+        height: 60px;
+        width: 60px;
         border-color: #CCFF00;
         border: 7.5px;
         border-radius: 12px;
-        background: #99FF66;
+        background: #fd8a8a;
         color: #000000;
         font-size: 30px;
         font-weight: bold;

@@ -61,7 +61,7 @@ Create_Map = () => {
 
 Setup_About_Button = (view) => {
     var search_button = document.createElement("BUTTON");
-    search_button.innerHTML = "About this App";
+    search_button.innerHTML = "?";
     search_button.id = "search_button";
     search_button.title = "Click this button to find out more about how the application works."; 
     search_button.onclick = function () { window.open("Home/About", "_blank"); };
