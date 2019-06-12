@@ -33,6 +33,10 @@ Create_Map = () => {
                 visible: true
               },
               {
+                id: 27,
+                visible: true // Flood Hazard Boundaries layer
+              },
+              {
                 id: 16,  // Base Flood Elevations layer
                 visible: true
               }
