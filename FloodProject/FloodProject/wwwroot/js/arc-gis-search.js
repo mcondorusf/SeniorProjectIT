@@ -7,10 +7,11 @@
             var geocoder = search.activeSource.locator; // World geocode service
             geocoder.locationToAddress(evt.mapPoint)
                 .then(function (response) {
-                    var address = response.address;
-                    showPopup(address, evt.mapPoint);
+                    fldInfo.address = response.address;
+                    queryApi(evt.mapPoint);
                 }, function (err) { // Show no address found
-                    showPopup("No address found.", evt.mapPoint);
+                    fldInfo.address = "No address found";
+                    queryApi(evt.mapPoint);
                 });
         }
     });
@@ -22,21 +23,30 @@
             var geocoder = search.activeSource.locator; // World geocode service
             geocoder.locationToAddress(coords)
                 .then(function (response) {
-                    var address = response.address;
-                    showPopup(address, coords);
+                    fldInfo.address = response.address;
+                    queryApi(coords);
                 }, function (err) { // Show no address found
-                    showPopup("No address found.", coords);
+                    fldInfo.address = "No address found";
+                    queryApi(coords);
                 });
         }
     });
 
     /// Pass/receive data from HomeController using ajax
     /// and updates the popup content
-    function showPopup(address, coords) {
-        Show_Loading_Overlay(view); 
+    function queryApi(coords) {
+        Show_Loading_Overlay(view);
 
-        var apiKey = config.API_KEY;
-        $.ajax({
+        fldInfo.coords = {
+            latitude: Math.round(coords.latitude * 100000) / 100000,
+            longitude: Math.round(coords.longitude * 100000) / 100000
+        }
+
+        var elevApiUrl = "https://ned.usgs.gov/epqs/pqs.php?x=" + coords.longitude
+            + "&y=" + coords.latitude + "&units=Feet&output=json";
+
+        //National Flood Data API call
+        $.ajax({ 
             url: 'Home/GetFloodDataByCoordinates',
             type: 'GET',
             dataType: 'json',
@@ -46,33 +56,25 @@
                 longitude: coords.longitude
             },
             success: function (response) {
-                view.popup.open({
-                    title: "<h2>Location Results: </h2>",
-                    content:
-                        "<b>Coordinates: </b>" + Math.round(coords.longitude * 100000) / 100000 + ", "
-                        + Math.round(coords.latitude * 100000) / 100000 + "<br><br>"
-                        + "<b>Address: </b>" + address + "<br><br>"
-                        + "<b>Flood Zone:</b> Zone " + response.data.floodZone + "<br><br>"
-                        + "<b>Catastrophic Flood Probability: </b>" + response.data.floodZoneDesciption + "<br><br>"
-                        + "<b>Base Flood Elevation: </b>" + response.data.elevation + " feet" + "<br><br>"
-                        + "<b>Flood Insurance Required? </b>" + response.data.specialFloodHazardArea + "<br><br>"
-                        + "<b>Location Street View: </b><br>"
-                        + "<img src=https://maps.googleapis.com/maps/api/streetview?size=400x220&location=" + coords.latitude
-                        + "," + coords.longitude + "&key=" + apiKey + ">" /// call to googlemaps API for streetview
-                });
+                fldInfo.hasInfo = true;
+                fldInfo.zone = response.data.floodZone;
+                fldInfo.zoneDes = response.data.floodZoneDesciption;
+                fldInfo.bfe = response.data.elevation;
+                fldInfo.specFldHzdArea = response.data.specialFloodHazardArea;
+
+                //USGS Elevation API call
+                $.ajax({
+                    url: elevApiUrl,
+                    type: 'GET',
+                    success: function (response) {
+                        fldInfo.elevation = response.USGS_Elevation_Point_Query_Service.Elevation_Query.Elevation;
+                        Show_Popup(view, fldInfo);
+                    }
+                 });
             },
             error: function () {
-                view.popup.open({
-                    title: "<h2>Location Results: </h2>",
-                    content:
-                        "<b>Coordinates: </b>" + Math.round(coords.longitude * 100000) / 100000 + ", "
-                        + Math.round(coords.latitude * 100000) / 100000 + "<br><br>"
-                        + "<b>Address: </b>" + address + "<br><br>"
-                        + "<b>Unable to retrieve flood data for location.<br><br>"
-                        + "<b>Location Street View: </b><br>"
-                        + "<img src=https://maps.googleapis.com/maps/api/streetview?size=400x220&location=" + coords.latitude
-                        + "," + coords.longitude + "&key=" + apiKey + ">" /// call to googlemaps API for streetview
-                });
+                fldInfo.hasInfo = false;
+                Show_Popup(view, fldInfo)
             }
         });
     }
