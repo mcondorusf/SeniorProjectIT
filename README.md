@@ -25,6 +25,14 @@ This web application is intended for use with all modern desktop browsers. Altho
 - <a href="https://developers.arcgis.com/" target="_blank">ArcGIS</a> - GIS, Maps, Layers
 - <a href="https://www.fema.gov/flood-insurance-rate-map-firm" target="_blank">FEMA</a> - Flood Insurance Data
 - <a href="http://nationalflooddata.com/flood/floodapi/" target="_blank">National Flood Data</a> - Flood Data API
+- <a href="https://developers.google.com/maps/documentation/streetview/intro" target="_blank">Google Static Street View </a> - Static Street View API 
+  * API key is referenced as an object within `config.js` file 
+  
+    ```
+    var config = {
+        API_KEY : 'xxxxxxxxxxxxxxxx'
+       }
+    ```
 
 ### Screenshots
 <img width="800" height="400" src="https://github.com/mcondorusf/SeniorProjectIT/blob/master/usf_flood_data.PNG?raw=true">
