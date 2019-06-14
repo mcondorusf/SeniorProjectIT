@@ -13,7 +13,7 @@ Show_Popup = (view, fldInfo) => {
                 + "<b>Catastrophic Flood Probability: </b>" + fldInfo.zoneDes + "<br><br>"
                 + "<b>Base Flood Elevation: </b>" + fldInfo.bfe + " feet" + "<br><br>"
                 + "<b>Ground Elevation: </b>" + fldInfo.elevation + " feet" + "<br><br>"
-                + "<b>Flood Insurance Required? </b>" + fldInfo.specFldHzdArea + "<br><br>"
+                + "<b>Flood Insurance Required? </b>" + fldInfo.fldInsuranceReq() + "<br><br>"
                 + "<b>Location Street View: </b><br>"
                 + "<img src=https://maps.googleapis.com/maps/api/streetview?size=400x220&location=" + fldInfo.coords.latitude
                 + "," + fldInfo.coords.longitude + "&key=" + apiKey + ">" /// call to googlemaps API for streetview

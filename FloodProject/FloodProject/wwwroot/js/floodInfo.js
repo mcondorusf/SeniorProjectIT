@@ -7,5 +7,15 @@ var fldInfo = {
     zoneDes: " ",
     bfe: 0,
     specFldHzdArea: false,
-    elevation: 0
+    elevation: 0,
+    stiltsHeight: function () {
+        return "Testing";
+    },
+    fldInsuranceReq: function () {
+        if (this.specFldHzdArea) {
+            return "True";
+        } else {
+            return "False";
+        }
+    }
 }
