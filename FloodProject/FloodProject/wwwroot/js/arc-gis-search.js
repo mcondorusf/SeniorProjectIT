@@ -38,8 +38,8 @@
         Show_Loading_Overlay(view);
 
         fldInfo.coords = {
-            latitude: Math.round(coords.latitude * 100000) / 100000,
-            longitude: Math.round(coords.longitude * 100000) / 100000
+            latitude: coords.latitude,
+            longitude: coords.longitude
         }
 
         var elevApiUrl = "https://ned.usgs.gov/epqs/pqs.php?x=" + coords.longitude
