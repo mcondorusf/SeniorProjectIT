@@ -18,20 +18,20 @@ var fldInfo = {
     //Function to calculate stilts height
     stiltsHeight: function () {
         if (this.specFldHzdArea && (this.elevation > this.bfe)) {
-            return "N/A - see other methods for insurance reduction";
+            return "Elevation already exceeds BFE";
         } else if (this.specFldHzdArea) {
             var stilts = (this.bfe - this.elevation) + 0.5;
             return Math.round(stilts * 100) / 100 + " feet";
         } else {
-            return "N/A";
+            return "Elevation already exceeds BFE";
         }
     },
     //Function to display formatted specFldHzdArea value
     fldInsuranceReq: function () {
         if (this.specFldHzdArea) {
-            return "True";
+            return "Yes";
         } else {
-            return "False";
+            return "No";
         }
     }
 }

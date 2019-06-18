@@ -14,7 +14,7 @@ Show_Popup = (view, fldInfo) => {
                 + "<b>Base Flood Elevation: </b>" + fldInfo.bfe + " feet" + "<br><br>"
                 + "<b>Ground Elevation: </b>" + fldInfo.elevation + " feet" + "<br><br>"
                 + "<b>Stilts Height: </b>" + fldInfo.stiltsHeight() + "<br><br>"
-                + "<b>Flood Insurance Required? </b>" + fldInfo.fldInsuranceReq() + "<br><br>"
+                + "<b>Flood Insurance Required: </b>" + fldInfo.fldInsuranceReq() + "<br><br>"
                 + "<b>Location Street View: </b><br>"
                 + "<img src=https://maps.googleapis.com/maps/api/streetview?size=400x220&location=" + fldInfo.coords.latitude
                 + "," + fldInfo.coords.longitude + "&key=" + apiKey + ">" /// call to googlemaps API for streetview
@@ -31,7 +31,7 @@ Show_Popup = (view, fldInfo) => {
                 + "<img src=https://maps.googleapis.com/maps/api/streetview?size=400x220&location=" + fldInfo.coords.latitude
                 + "," + fldInfo.coords.longitude + "&key=" + apiKey + ">" /// call to googlemaps API for streetview
         });
-    } else { //If no flood info was found, display popup with limited info
+    } else { //If API call fails, display popup notifying the user to try again
 
         view.popup.open({
             title: "<h2>Location Results: </h2>",
