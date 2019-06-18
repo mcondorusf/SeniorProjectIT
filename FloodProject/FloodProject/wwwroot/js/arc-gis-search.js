@@ -56,7 +56,6 @@
                 longitude: coords.longitude
             },
             success: function (response) {
-                console.log(response.data);
                 fldInfo.hasInfo = true
                 fldInfo.zone = response.data.floodZone;
                 fldInfo.zoneDes = response.data.zoneDescription;
