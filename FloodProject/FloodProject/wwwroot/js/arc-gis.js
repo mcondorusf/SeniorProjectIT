@@ -48,7 +48,8 @@ Create_Map = () => {
         });
 
         var legend = new Legend({ // Creates legend widget
-            view: view
+            view: view,
+
         });
 
         map.add(layer); //Displays FEMA FIRM layer

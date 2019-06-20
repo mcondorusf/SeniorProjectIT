@@ -19,11 +19,9 @@ var fldInfo = {
     stiltsHeight: function () {
         if (this.specFldHzdArea && (this.elevation > this.bfe)) {
             return "Elevation already exceeds BFE";
-        } else if (this.specFldHzdArea) {
+        } else {
             var stilts = (this.bfe - this.elevation) + 0.5;
             return Math.round(stilts * 100) / 100 + " feet";
-        } else {
-            return "Elevation already exceeds BFE";
         }
     },
     //Function to display formatted specFldHzdArea value
