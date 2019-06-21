@@ -29,7 +29,6 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#about">ABOUT</a></li>
                     <li><a href="#services">HOW TO USE</a></li>
-                    <li><a href="#portfolio">TEMPLATE INFO</a></li>
                     <li><a href="#pricing">BASE ELEVATION AND HOUSE HEIGHT</a></li>
                     <li><a href="#contact">ABOUT THE TEAM</a></li>
                 </ul>
@@ -88,18 +87,7 @@
         </div>
     </div>
 
-    <!-- Container (Portfolio Section) -->
-    <div id="portfolio" class="container-fluid text-center bg-grey">
-        <h2>LEGEND INFO</h2><br>
-        <h4>What all of the colors mean</h4>
-        <div class="row text-center slideanim">
-            <div class="col-sm-4">
-                <div class="thumbnail">
-                    <img src="https://i.imgur.com/9DmEqHj.png" alt="legend" width="400" height="300">
-                </div>
-            </div>
-
-        </div><br>
+   <br>
 
 
         <!-- Container (Pricing Section) -->
@@ -116,36 +104,38 @@
             <h2 class="text-center">CONTACT US</h2>
             <div class="row">
                 <div class="col-sm-5">
-                    <p>If you have any questions, you can reach us here</p>
+                    <p>If you have any questions, you can reach us here:</p>
                     <p><span class="glyphicon glyphicon-map-marker"></span> Tampa, FL</p>
 
                     <p><span class="glyphicon glyphicon-envelope"></span> floodpreventionapp@gmail.com</p>
                 </div>
+                
                 <div class="col-sm-7 slideanim">
-                    <div class="row">
-                        <div class="col-sm-6 form-group">
-                            <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+                    <form method="post" action="mailto:floodpreventionapp@gmail.com" enctype="text/plain">
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                            </div>
                         </div>
-                        <div class="col-sm-6 form-group">
-                            <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                        <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <button class="btn btn-default pull-right" type="submit">Send</button>
+                            </div>
                         </div>
-                    </div>
-                    <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
-                    <div class="row">
-                        <div class="col-sm-12 form-group">
-                            <button class="btn btn-default pull-right" type="submit">Send</button>
-                        </div>
-                    </div>
+                    </form>
+
                 </div>
             </div>
+           
         </div>
-
-        <!-- Image of location/map -->
-        <img src="/w3images/map.jpg" class="w3-image w3-greyscale-min" style="width:100%">
 
         <footer class="container-fluid text-center">
             <a href="#myPage" title="To Top">
-                <span class="glyphicon glyphicon-chevron-up"></span>
+
             </a>
             <p>Bootstrap Theme Made By <a href="https://www.w3schools.com" title="Visit w3schools">www.w3schools.com</a></p>
         </footer>
@@ -186,6 +176,5 @@
                 });
             })
         </script>
-
 </body>
 </html>
