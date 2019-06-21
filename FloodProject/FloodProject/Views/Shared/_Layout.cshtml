@@ -20,18 +20,25 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="FloodMap" class="navbar-brand">Flood Map</a>
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Overview<span class="caret"></span></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Overview<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li onclick="Show_Motivation_Section()"><a href="#">Motivation</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li onclick="Show_Scope_Section()"><a href="#">Scope</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li onclick="Show_Tools_Section()"><a href="#">Tools</a></li>
+                            <li onclick="Show_Motivation_Section()"><a>Motivation</a></li>
+                            <li onclick="Show_Scope_Section()"><a>Scope</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li onclick="Show_Dotnetcore_Section()"><a>.NET Core</a></li>
+                            <li onclick="Show_Arcgis_Section()"><a>ArcGIS</a></li>
+                            <li onclick="Show_Nationalflooddata_Section()"><a>National Flood Data API</a></li>
+                            <li onclick="Show_Github_Section()"><a>GitHub</a></li>
+                            <li onclick="Show_Azure_Section()"><a>Azure</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -56,6 +63,14 @@
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
     </script>
     <script src="~/js/site.min.js" asp-append-version="true"></script>
+
+    <script src="~/js/info.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            Hide_All_Sections();
+        });
+    </script>
 
     @RenderSection("Scripts", required: false)
 </body>
