@@ -47,3 +47,63 @@ Show_Azure_Section = () => {
 
     $('#azure').show();
 }; 
+
+Show_Generalusage_Section = () => {
+    Hide_All_Sections();
+
+    $('#generalusage').show();
+}; 
+
+Show_Themap_Section = () => {
+    Hide_All_Sections();
+
+    $('#themap').show();
+}; 
+
+Show_Findinglocations_Section = () => {
+    Hide_All_Sections();
+
+    $('#findinglocations').show();
+}; 
+
+Show_Popupinformation_Section = () => {
+    Hide_All_Sections();
+
+    $('#popupinformation').show();
+}; 
+
+Show_Legend_Section = () => {
+    Hide_All_Sections();
+
+    $('#legend').show();
+}; 
+
+Show_Basefloodelevation_Section = () => {
+    Hide_All_Sections();
+
+    $('#basefloodelevation').show();
+}; 
+
+Show_Insurance_Section = () => {
+    Hide_All_Sections();
+
+    $('#insurance').show();
+}; 
+
+Show_Stiltheights_Section = () => {
+    Hide_All_Sections();
+
+    $('#stiltheights').show();
+}; 
+
+Show_Team_Section = () => {
+    Hide_All_Sections();
+
+    $('#team').show();
+}; 
+
+Show_Contact_Section = () => {
+    Hide_All_Sections();
+
+    $('#contact').show();
+}; 
