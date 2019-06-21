@@ -5,6 +5,7 @@ var fldInfo = {
     coords: 0,
     zone: " ",
     zoneDes: " ",
+    fldZoneDes: " ",
     bfe: 0,
     specFldHzdArea: false,
     elevation: 0,
@@ -16,19 +17,19 @@ var fldInfo = {
     },
     //Function to calculate stilts height
     stiltsHeight: function () {
-        if (this.specFldHzdArea) {
+        if (this.specFldHzdArea && (this.elevation > this.bfe)) {
+            return "Elevation already exceeds BFE";
+        } else {
             var stilts = (this.bfe - this.elevation) + 0.5;
             return Math.round(stilts * 100) / 100 + " feet";
-        } else {
-            return "N/A";
         }
     },
     //Function to display formatted specFldHzdArea value
     fldInsuranceReq: function () {
         if (this.specFldHzdArea) {
-            return "True";
+            return "Yes";
         } else {
-            return "False";
+            return "No";
         }
     }
 }

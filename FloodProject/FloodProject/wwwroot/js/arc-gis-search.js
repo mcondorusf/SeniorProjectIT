@@ -56,9 +56,10 @@
                 longitude: coords.longitude
             },
             success: function (response) {
-                fldInfo.hasInfo = true;
+                fldInfo.hasInfo = true
                 fldInfo.zone = response.data.floodZone;
-                fldInfo.zoneDes = response.data.floodZoneDesciption;
+                fldInfo.zoneDes = response.data.zoneDescription;
+                fldInfo.fldZoneDes = response.data.floodZoneDesciption;
                 fldInfo.bfe = response.data.elevation;
                 fldInfo.specFldHzdArea = response.data.specialFloodHazardArea;
 
