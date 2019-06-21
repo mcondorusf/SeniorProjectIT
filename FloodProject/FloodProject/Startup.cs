@@ -59,6 +59,12 @@ namespace FloodProject
                     name: "about",
                     template: "About",
                     defaults: new { controller = "Home", action = "About" });
+
+                //Custom route for Info page at /Info
+                routes.MapRoute(
+                    name: "Info",
+                    template: "Info",
+                    defaults: new { controller = "Home", action = "Info" });
             });
         }
     }

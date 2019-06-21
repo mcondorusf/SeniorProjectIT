@@ -20,12 +20,20 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="FloodMap" class="navbar-brand">FloodProject</a>
+                <a asp-area="" asp-controller="Home" asp-action="FloodMap" class="navbar-brand">Flood Map</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="FloodMap">Flood Map</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Overview<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li onclick="Show_Motivation_Section()"><a href="#">Motivation</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li onclick="Show_Scope_Section()"><a href="#">Scope</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li onclick="Show_Tools_Section()"><a href="#">Tools</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -33,10 +41,6 @@
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>IT Senior Project - Flood Fighters - Summer 2019</p>
-        </footer>
     </div>
 
     <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
