@@ -9,9 +9,8 @@ Create_Map = () => {
         "esri/views/MapView",
         "esri/widgets/Search", //Adds the map search function to ArgGIS
         "esri/widgets/Legend",
-        "esri/layers/MapImageLayer", //Adds map image layer function
-        "esri/layers/support/Sublayer"
-    ], function (Map, MapView, Search, Legend, MapLayer, Sublayer) {
+        "esri/layers/MapImageLayer" //Adds map image layer function
+    ], function (Map, MapView, Search, Legend, MapLayer) {
 
         var map = new Map({
             basemap: "topo-vector"
@@ -34,7 +33,8 @@ Create_Map = () => {
               },
               {
                 id: 27,
-                visible: true // Flood Hazard Boundaries layer
+                visible: true, // Flood Hazard Boundaries layer
+                legendEnabled: false
               },
               {
                 id: 16,  // Base Flood Elevations layer
@@ -47,18 +47,13 @@ Create_Map = () => {
             view: view,
         });
 
-        var legend = new Legend({ // Creates legend widget
-            view: view,
-
-        });
-
         map.add(layer); //Displays FEMA FIRM layer
  
         view.ui.add(search, "top-right"); //Places search widget
 
-        view.ui.add(legend, "bottom-left"); //Places legend widget
-
         Setup_About_Button(view); 
+
+        Show_Legend(view, Legend);
 
         Setup_Custom_Search_Response(view, search); // Fires search functions
     });
