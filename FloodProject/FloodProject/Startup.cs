@@ -64,7 +64,7 @@ namespace FloodProject
                 routes.MapRoute(
                     name: "Info",
                     template: "Info",
-                    defaults: new { controller = "Home", action = "Info" });
+                    defaults: new { controller = "Info", action = "Info" });
             });
         }
     }
