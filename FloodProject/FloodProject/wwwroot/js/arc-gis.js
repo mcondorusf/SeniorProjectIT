@@ -47,13 +47,18 @@ Create_Map = () => {
             view: view,
         });
 
+        var legend = new Legend({ // Creates legend widget
+            view: view,
+
+        });
+
         map.add(layer); //Displays FEMA FIRM layer
  
         view.ui.add(search, "top-right"); //Places search widget
 
         Setup_About_Button(view); 
 
-        Show_Legend(view, Legend);
+        Show_Legend(view, legend);
 
         Setup_Custom_Search_Response(view, search); // Fires search functions
     });

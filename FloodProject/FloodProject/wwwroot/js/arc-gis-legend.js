@@ -1,9 +1,4 @@
-﻿Show_Legend = (view, Legend) => {
-
-    var legend = new Legend({ // Creates legend widget
-        view: view,
-
-    });
+﻿Show_Legend = (view, legend) => {
 
     view.ui.add(legend, "bottom-left"); //Places legend widget
 
