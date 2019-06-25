@@ -31,5 +31,17 @@ var fldInfo = {
         } else {
             return "No";
         }
+    },
+    //Function to display elevation value
+    getElevation: function () {
+        if (this.elevation == null) {
+            return "Unable to retrieve flood info for this location.";
+        } else if (this.elevation == -1000000) {
+            return "There is no elevation data available for this location.";
+        } else {
+            return this.elevation;
+        }
     }
 }
+
+

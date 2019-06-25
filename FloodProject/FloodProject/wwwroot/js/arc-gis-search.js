@@ -70,6 +70,9 @@
                     success: function (response) {
                         fldInfo.elevation = response.USGS_Elevation_Point_Query_Service.Elevation_Query.Elevation;
                         Show_Popup(view, fldInfo);
+                    },
+                    error: function () {
+                        fldInfo.elevation = null;
                     }
                  });
             },
