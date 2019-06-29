@@ -3,7 +3,7 @@ Show_Popup = (view, fldInfo) => {
 
     var apiKey = config.API_KEY;
 
-    if (fldInfo.hasInfo && fldInfo.zone != null) { //If flood info was found, display popup with all info
+    if (fldInfo.hasInfo && fldInfo.zone != null && fldInfo.zone != 'OPEN WATER') { //If flood info was found, display popup with all info
         if (fldInfo.specFldHzdArea) { //If flood insurance is required
             view.popup.open({
                 title: "<h2>Location Results: </h2>",
@@ -34,7 +34,7 @@ Show_Popup = (view, fldInfo) => {
                     + "," + fldInfo.coords.longitude + "&key=" + apiKey + ">" /// call to googlemaps API for streetview
             });
         }
-    } else if (fldInfo.hasInfo && fldInfo.zone == null) { //If no flood info was found, display popup with limited info
+    } else if (fldInfo.hasInfo && (fldInfo.zone == null || fldInfo.zone == 'OPEN WATER')) { //If no flood info was found, display popup with limited info
         view.popup.open({
             title: "<h2>Location Results: </h2>",
             content:
