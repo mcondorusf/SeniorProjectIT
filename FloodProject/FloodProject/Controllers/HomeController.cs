@@ -19,15 +19,6 @@ namespace FloodProject.Controllers
         }
 
         /// <summary>
-        /// This is the controller action for the About page. 
-        /// It returns the About view. 
-        /// </summary>
-        public IActionResult About()
-        {
-            return View();
-        }
-
-        /// <summary>
         /// This is going to return flood data from the National Flood Data API. 
         /// It will get flood data by lat/long coordinates. 
         /// It will return a Flood Data Result model as JSON. 

@@ -56,7 +56,7 @@ Create_Map = () => {
  
         view.ui.add(search, "top-right"); //Places search widget
 
-        Setup_About_Button(view); 
+        Setup_Info_Button(view); 
 
         Show_Legend(view, legend);
 
@@ -64,12 +64,12 @@ Create_Map = () => {
     });
 };
 
-Setup_About_Button = (view) => {
+Setup_Info_Button = (view) => {
     var search_button = document.createElement("BUTTON");
     search_button.innerHTML = "?";
     search_button.id = "search_button";
     search_button.title = "Click this button to find out more about how the application works."; 
-    search_button.onclick = function () { window.open("Home/About", "_blank"); };
+    search_button.onclick = function () { window.open("Info", "_blank"); };
 
     view.ui.add(search_button, "bottom-right"); //Places button
 }; 
