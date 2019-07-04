@@ -184,7 +184,7 @@ namespace FloodDataAPI
                 case "V30":
                     return
                         "An area with a 1% annual chance flooding with velocity hazard due to waves; " +
-                        "BFEs have are available.";
+                        "BFEs are available.";
 
                 default:
                     return String.Empty;
