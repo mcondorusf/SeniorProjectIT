@@ -7,6 +7,7 @@ var fldInfo = {
     zoneDes: " ",
     fldZoneDes: " ",
     bfe: 0,
+    hasBFE: false,
     specFldHzdArea: false,
     elevation: 0,
     //Function to display rounded coordinates

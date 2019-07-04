@@ -44,6 +44,7 @@ namespace FloodDataAPI
             if (flood_map_result != null)
             {
                 model.Elevation = flood_map_result.elev;
+                model.BaseFloodElevationAvailable = true; 
             }
 
             return model;

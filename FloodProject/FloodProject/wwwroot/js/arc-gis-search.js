@@ -61,6 +61,7 @@
                 fldInfo.zoneDes = response.data.zoneDescription;
                 fldInfo.fldZoneDes = response.data.floodZoneDesciption;
                 fldInfo.bfe = response.data.elevation;
+                fldInfo.hasBFE = response.data.baseFloodElevationAvailable; 
                 fldInfo.specFldHzdArea = response.data.specialFloodHazardArea;
 
                 //USGS Elevation API call

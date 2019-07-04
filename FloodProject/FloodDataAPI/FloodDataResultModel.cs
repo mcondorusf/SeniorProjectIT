@@ -57,6 +57,12 @@ namespace FloodDataAPI
         public double Elevation { get; set; } = 0; 
 
         /// <summary>
+        /// This indicates if we recieved a response from the base flood elevation list in the maps API endpoint. 
+        /// This endpoint does not always return a response, so if we don't get one we want to make sure we do not show any BFE. 
+        /// </summary>
+        public bool BaseFloodElevationAvailable { get; set; } = false; 
+
+        /// <summary>
         /// This gets a description for a flood code. 
         /// These descritions come from http://nationalflooddata.com/flood/floodzone/
         /// They provide the description for the Flood Zone code. 
