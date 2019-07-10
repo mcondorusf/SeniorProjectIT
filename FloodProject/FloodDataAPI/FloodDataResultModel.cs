@@ -149,7 +149,7 @@ namespace FloodDataAPI
                 case "V":
                     return
                         "An area with a 1% annual chance flooding with velocity hazard due to waves; " +
-                        "BFEs have are not available.";
+                        "BFEs are not available.";
 
                 case "VE":
                 case "V1":
